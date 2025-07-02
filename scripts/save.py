@@ -2,6 +2,8 @@ import os
 import pandas as pd
 import logging
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
 def save_data(date_str: str) -> None:
     temp_clean_path = f"data/temp_clean/{date_str}/"
     final_clean_path = f"data/clean/{date_str}/"

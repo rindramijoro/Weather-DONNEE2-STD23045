@@ -4,6 +4,8 @@ import pandas as pd
 from datetime import datetime
 import logging
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
 def extract_meteo(city: str, api_key: str, date: str) -> bool:
     try:
         url = "https://api.openweathermap.org/data/2.5/weather"
@@ -24,18 +26,18 @@ def extract_meteo(city: str, api_key: str, date: str) -> bool:
             'temperature': data['main']['temp'],
             'humidite': data['main']['humidity'],
             'pression': data['main']['pressure'],
-            'vent': data['main']['wind_speed'],
+            'vent': data['wind']['speed'],
             'description': data['weather'][0]['description']
         }
-        
-        
-        os.makedirs(f"data/raw/{date}", exist_ok=True)
-        
-        pd.DataFrame([weather_data]).to_csv(
-            f"data/raw/{date}/meteo_{city}.csv",
-            index=False
-        )
-        
+
+        # Use full path here
+        save_dir = os.path.join(BASE_DIR, f"data/raw/{date}")
+        os.makedirs(save_dir, exist_ok=True)
+
+        csv_path = os.path.join(save_dir, f"meteo_{city}.csv")
+        pd.DataFrame([weather_data]).to_csv(csv_path, index=False)
+
+        logging.info(f"Saved CSV to: {csv_path}")
         return True
     
     except requests.exceptions.RequestException as e:

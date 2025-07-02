@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 def transform_to_star() -> str:
    
     input_file = "data/processed/meteo_global.csv"  

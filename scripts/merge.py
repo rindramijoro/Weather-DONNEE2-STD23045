@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
 def merge_files(date: str) -> str:
     input_dir = f"data/raw/{date}"
     output_file = "data/processed/meteo_global.csv"

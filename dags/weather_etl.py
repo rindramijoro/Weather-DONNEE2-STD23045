@@ -1,11 +1,15 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime
-from weather_pipeline.scripts.extract import extract_meteo
-from weather_pipeline.scripts.clean import clean_data
-from weather_pipeline.scripts.save import save_data
-from weather_pipeline.scripts.merge import merge_files
-from weather_pipeline.scripts.transform import transform_to_star
+from scripts.extract import extract_meteo
+from scripts.clean import clean_data
+from scripts.save import save_data
+from scripts.merge import merge_files
+from scripts.transform import transform_to_star
 
 default_args = {
     'owner': 'Rindra Mijoro',
@@ -13,7 +17,7 @@ default_args = {
     'start_date': datetime(2025, 6, 29),
 }
 
-CITIES = ['Paris','London', 'Tokyo','New York','Antananarivo ']
+CITIES = ['Paris','London', 'Tokyo','New York','Antananarivo']
 
 with DAG(
     'weather_etl_pipeline',
