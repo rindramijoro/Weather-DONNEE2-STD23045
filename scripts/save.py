@@ -2,11 +2,13 @@ import os
 import pandas as pd
 import logging
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 
 def save_data(date_str: str) -> None:
-    temp_clean_path = f"data/temp_clean/{date_str}/"
-    final_clean_path = f"data/clean/{date_str}/"
+    temp_clean_path = os.path.join(DATA_DIR, "temp_clean", date_str)
+    final_clean_path = os.path.join(DATA_DIR, "clean", date_str)
+
     os.makedirs(final_clean_path, exist_ok=True)
 
     for filename in os.listdir(temp_clean_path):
@@ -19,3 +21,5 @@ def save_data(date_str: str) -> None:
                 logging.info(f"Saved cleaned file: {filename}")
             except Exception as e:
                 logging.error(f"Error saving {filename}: {e}")
+                
+                

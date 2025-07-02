@@ -1,7 +1,8 @@
 import pandas as pd
 import os
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 def transform_to_star() -> str:
    
     input_file = "data/processed/meteo_global.csv"  
@@ -42,7 +43,7 @@ def transform_to_star() -> str:
     ).drop(columns=['ville'])
     
     
-    faits_path = f"{output_dir}/fact_weather.csv"
+    faits_path = os.path.join(DATA_DIR, "star_schema", "fact_weather.csv")
     faits_meteo.to_csv(faits_path, index=False)
     
     return faits_path

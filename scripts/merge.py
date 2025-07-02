@@ -1,11 +1,12 @@
 import pandas as pd
 import os
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 
 def merge_files(date: str) -> str:
     input_dir = f"data/raw/{date}"
-    output_file = "data/processed/meteo_global.csv"
+    output_file = os.path.join(DATA_DIR, "processed", "meteo_global.csv")
     
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     

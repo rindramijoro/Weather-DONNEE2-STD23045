@@ -1,0 +1,6 @@
+date_extraction,temperature,humidite,pression,vent,description,ville_id
+2025-07-02 16:50:12,33.13,43,1015,7.72,ciel dégagé,1
+2025-07-02 16:50:15,23.77,87,1012,2.57,nuageux,5
+2025-07-02 16:50:15,19.5,76,1018,3.6,nuageux,4
+2025-07-02 16:50:12,27.47,83,1013,5.14,nuageux,3
+2025-07-02 16:50:15,15.98,63,1025,6.17,nuageux,2

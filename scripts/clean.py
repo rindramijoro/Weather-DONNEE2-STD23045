@@ -2,11 +2,12 @@ import pandas as pd
 import os
 import logging
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 
 def clean_data(date_str: str) -> None:
-    raw_path = f"data/raw/{date_str}/"
-    clean_path = f"data/temp_clean/{date_str}/"
+    raw_path = os.path.join(DATA_DIR, "raw", date_str)
+    clean_path = os.path.join(DATA_DIR, "temp_clean", date_str)
 
     if not os.path.exists(raw_path):
         raise FileNotFoundError(f"Raw data folder not found: {raw_path}")

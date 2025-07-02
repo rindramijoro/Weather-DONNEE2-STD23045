@@ -1,0 +1,6 @@
+ville,date_extraction,temperature,humidite,pression,vent,description
+Paris,2025-07-02 16:50:12,33.13,43,1015,7.72,ciel dégagé
+New York,2025-07-02 16:50:15,23.77,87,1012,2.57,nuageux
+London,2025-07-02 16:50:15,19.5,76,1018,3.6,nuageux
+Tokyo,2025-07-02 16:50:12,27.47,83,1013,5.14,nuageux
+Antananarivo,2025-07-02 16:50:15,15.98,63,1025,6.17,nuageux
