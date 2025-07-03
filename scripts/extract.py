@@ -23,7 +23,7 @@ def extract_meteo(city: str, api_key: str, date: str) -> bool:
         weather_data = {
             'ville': city,
             'date': datetime.now().strftime("%Y-%m-%d"),
-            'temp_moyenne': data['main']['temp'],  
+            'temp_moyenne': data['main']['temp'],   
             'temp_min': data['main']['temp_min'],
             'temp_max': data['main']['temp_max'],
             'precipitation_totale': data.get('rain', {}).get('1h', 0.0),  

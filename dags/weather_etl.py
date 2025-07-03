@@ -10,6 +10,7 @@ from scripts.clean import clean_data
 from scripts.save import save_data
 from scripts.merge import merge_files
 from scripts.transform import transform_to_star
+from scripts.clean_historical_data import clean_historical_data
 
 default_args = {
     'owner': 'Rindra Mijoro',
@@ -39,6 +40,11 @@ with DAG(
         task_id='clean_data',
         python_callable=clean_data,
         op_args=["{{ ds }}"], 
+    )
+    
+    clean_history_task = PythonOperator(
+        task_id='clean_historical_data',
+        python_callable=clean_historical_data
     )
 
     save_data_task = PythonOperator(
