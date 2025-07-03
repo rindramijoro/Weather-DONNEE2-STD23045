@@ -5,7 +5,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 
 def merge_files(date: str) -> str:
-    input_dir = f"data/raw/{date}"
+    input_dir = os.path.join(DATA_DIR, "raw", date)
     output_file = os.path.join(DATA_DIR, "processed", "meteo_global.csv")
     
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -25,7 +25,7 @@ def merge_files(date: str) -> str:
     
     updated_df = pd.concat([global_df] + new_data, ignore_index=True)
     updated_df = updated_df.drop_duplicates(
-        subset=['ville', 'date_extraction'],  
+        subset=['ville', 'date'],  
         keep='last'                          
     )
     

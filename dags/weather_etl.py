@@ -17,7 +17,7 @@ default_args = {
     'start_date': datetime(2025, 6, 29),
 }
 
-CITIES = ['Paris','London', 'Tokyo','New York','Antananarivo']
+CITIES = ['Sydney','New York','Paris','London', 'Tokyo']
 
 with DAG(
     'weather_etl_pipeline',

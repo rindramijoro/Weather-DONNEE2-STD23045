@@ -22,12 +22,13 @@ def extract_meteo(city: str, api_key: str, date: str) -> bool:
         data = response.json()
         weather_data = {
             'ville': city,
-            'date_extraction': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            'temperature': data['main']['temp'],
-            'humidite': data['main']['humidity'],
-            'pression': data['main']['pressure'],
-            'vent': data['wind']['speed'],
-            'description': data['weather'][0]['description']
+            'date': datetime.now().strftime("%Y-%m-%d"),
+            'temp_moyenne': data['main']['temp'],  
+            'temp_min': data['main']['temp_min'],
+            'temp_max': data['main']['temp_max'],
+            'precipitation_totale': data.get('rain', {}).get('1h', 0.0),  
+            'vent_moyen': data['wind']['speed'],
+            'jours_pluvieux': 1 if 'rain' in data else 0
         }
 
         # Use full path here
