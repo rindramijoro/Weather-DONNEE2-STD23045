@@ -18,10 +18,16 @@ def clean_data(date_str: str) -> None:
         if filename.endswith(".csv"):
             try:
                 df = pd.read_csv(os.path.join(raw_path, filename))
-                
-                df.dropna(inplace=True)  # Drop rows with missing values
-                df['temperature'] = pd.to_numeric(df['temperature'], errors='coerce')
-                df['vent'] = pd.to_numeric(df['vent'], errors='coerce')  # Coerce invalid to NaN
+
+                # Drop rows with any missing values
+                df.dropna(inplace=True)
+
+                # Convert all relevant fields to numeric
+                for col in ['temp_moyenne', 'temp_min', 'temp_max', 'precipitation_total', 'vent_moyen', 'jours_pluvieux']:
+                    if col in df.columns:
+                        df[col] = pd.to_numeric(df[col], errors='coerce')
+
+                df.fillna(0, inplace=True)
 
                 df.to_csv(os.path.join(clean_path, filename), index=False)
                 logging.info(f"Cleaned: {filename}")

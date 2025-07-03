@@ -16,7 +16,6 @@ def save_data(date_str: str) -> None:
             try:
                 df = pd.read_csv(os.path.join(temp_clean_path, filename))
                 
-                # final formatting before saving
                 df.to_csv(os.path.join(final_clean_path, filename), index=False)
                 logging.info(f"Saved cleaned file: {filename}")
             except Exception as e:

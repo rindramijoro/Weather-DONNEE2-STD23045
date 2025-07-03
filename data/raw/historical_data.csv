@@ -1,4 +1,4 @@
-ville,date,temperature,temperature_min,temperature_max,precipitation,vent,pluie
+ville,date,temp_moyenne,temp_min,temp_max,precipitation_totale,vent_moyen,jours_pluvieux
 Sydney,2019-01-01,26.1,21.7,31.6,0.0,0.0,1.0
 Sydney,2019-01-02,24.9,21.4,29.8,0.0,15.0,0.0
 Sydney,2019-01-03,24.0,21.4,28.8,0.0,0.0,0.0

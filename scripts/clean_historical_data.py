@@ -12,23 +12,15 @@ def clean_historical_data() -> None:
     try:
         df = pd.read_csv(input_file)
 
-        # Rename columns to match current format
-        df.rename(columns={
-            'temp_moyenne': 'temperature',
-            'temp_min': 'temperature_min',
-            'temp_max': 'temperature_max',
-            'precipitation_totale': 'precipitation',
-            'vent_moyen': 'vent',
-            'jours_pluvieux': 'pluie'
-        }, inplace=True)
-
-        for col in ['temperature', 'temperature_min', 'temperature_max']:
+        for col in ['temp_moyenne', 'temp_min', 'temp_max']:
             df[col] = df[col].astype(str).str.replace(",", ".", regex=False)
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
-        for col in ['precipitation', 'vent', 'pluie']:
+        # Clean numeric columns that may already be clean
+        for col in ['precipitation_totale', 'vent_moyen', 'jours_pluvieux']:
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
+        # Fill missing values with 0
         df.fillna(0, inplace=True)
 
         os.makedirs(os.path.dirname(output_file), exist_ok=True)

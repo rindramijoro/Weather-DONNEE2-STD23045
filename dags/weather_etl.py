@@ -64,4 +64,4 @@ with DAG(
         python_callable=transform_to_star
     )
 
-    extract_tasks >> clean_data_task >> save_data_task >> merge_task >> transform_task
+    extract_tasks >> clean_history_task >> clean_data_task >> save_data_task >> merge_task >> transform_task

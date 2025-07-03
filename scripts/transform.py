@@ -35,8 +35,7 @@ def transform_to_star() -> str:
     fact_weather = meteo_data.merge(dim_ville, on="ville", how="left").drop(columns=["ville"])
 
     # Optional: reorder columns (ville_id first, then date, etc.)
-    fact_weather = fact_weather[["ville_id", "date", "temp_moyenne", "temp_min", "temp_max",
-                                 "precipitation_totale", "vent_moyen", "jours_pluvieux"]]
+    fact_weather = fact_weather[["ville_id", "date", "temperature", "temperature_min", "temperature_max","precipitation", "vent", "pluie"]]
 
     facts_path = os.path.join(output_dir, "fact_weather.csv")
     fact_weather.to_csv(facts_path, index=False)
